@@ -1,0 +1,14 @@
+{
+  "name": "challenge-blog-api",
+  "version": "1.0.0",
+  "description": "unit 1 server side challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  }
+}
