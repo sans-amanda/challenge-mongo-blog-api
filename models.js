@@ -18,5 +18,28 @@ const blogPostSchema = mongoose.Schema({
 
 });
 
+//add virtual to get and create author name
+blogPostSchema.virtual('fullName').get( function() {
+  const auth = this.author;
+  return `${author.firstName} ${author.lastName}`;
+  })
+  .set(function( fullName ) {
+  const [first, last] = fullName.split(' ');
+  this.author.firstName = first;
+  this.author.lastName = last;
+});
+
+//an instance method to return blogPostSchema
+blogPostSchema.methods.serialize = function() {
+  return {
+    id: this.id,
+    title: this.title,
+    author: this.fullName,
+    content: this.content,
+    created: this.created
+  };
+};
+
+const BlogPosts = mongoose.model('Blogposts', blogPostSchema);
 
 module.exports = {BlogPosts};
